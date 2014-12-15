@@ -14,7 +14,12 @@
                (setv sys.stdout fake-stdout)
                (setv fake-stderr (StringIO))
                (setv sys.stderr fake-stderr)
-               (HyREPL.runsource self code "<input>" "single")
+
+               ;; runsource returns True on line continuation, but
+               ;; jQuery console has no way to handle multi-line inputs, so
+               ;; just fail with PrematureEndOfInput
+               (if (= (HyREPL.runsource self code "<input>" "single") True)
+                 (sys.stderr.write "Premature end of input"))
                (setv sys.stdout old-stdout)
                (setv sys.stderr old-stderr)
                {"stdout" (fake-stdout.getvalue) "stderr" (fake-stderr.getvalue)})]])
