@@ -1,34 +1,37 @@
 $(document).ready(function(){
-  var backlog = [];
-  var console = $('#hy-console').console({
-    promptLabel: '=> ',
-    commandValidate:function(line){
-      if (line == '') return false;
-      else return true;
-    },
-    commandHandle:function(line, report){
-      $.ajax({
-        type: 'POST',
-        url: '/eval',
-        data: JSON.stringify({code: line, env: backlog}),
-        contentType: 'application/json',
-        dataType: 'json',
-        success: function(data) {
-          report([{msg : data.stdout, className:'jquery-console-message-value'},
-                  {msg : data.stderr, className:'jquery-console-message-error'}]);
-        }
-      });
-      backlog.push(line);
-    },
-    animateScroll:true,
-    promptHistory:true,
-    autofocus:true,
-    welcomeMessage: 'hy ({hy_version}) [{server_software}]'.supplant({
-      hy_version: hy_version,
-      server_software: server_software
-    })
-  });
-  console.promptText('(+ 41 1)');
+    var backlog = [];
+    var jqconsole = $('#hy-console').jqconsole(
+        'hy ({hy_version}) [{server_software}]\n'.supplant({
+            hy_version: hy_version,
+            server_software: server_software
+        }), "=>", "... ");
+
+    var startPrompt = function() {
+        jqconsole.Prompt(true, function(input) {
+            $.ajax({
+                type: 'POST',
+                url: '/eval',
+                data: JSON.stringify({code: input, env: backlog}),
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function(data) {
+                    jqconsole.Write(data.stdout, 'jquery-console-message-value');
+                    jqconsole.Write(data.stderr, 'jquery-console-message-error');
+                    backlog.push(input);
+                    startPrompt();
+                }
+            });
+        });
+    };
+    startPrompt();
+
+    jqconsole.RegisterShortcut('E', function() {
+        this.MoveToEnd();
+    });
+
+    jqconsole.RegisterShortcut('A', function() {
+        this.MoveToStart();
+    });
 });
 
 
