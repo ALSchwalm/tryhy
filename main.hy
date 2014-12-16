@@ -4,6 +4,7 @@
         [json]
         [hy.cmdline [HyREPL run_command]]
         [hy]
+        [traceback]
         [flask [Flask redirect request render_template]])
 
 (defclass MyHyREPL [HyREPL]
@@ -17,7 +18,9 @@
 
                (if repl
                  (HyREPL.runsource self code "<input>" "single")
-                 (run_command code))
+                 (try (run_command code)
+                      (catch [_ Exception]
+                        (sys.stderr.write (traceback.format_exc)))))
 
                (setv sys.stdout old-stdout)
                (setv sys.stderr old-stderr)
