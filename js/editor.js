@@ -16,6 +16,7 @@ $(document).ready(function(){
 
                 // Stop and start the console to force a new prompt to be printed
                 var currentText = Console.GetPromptText();
+                Console.ClearPromptText();
                 Console.AbortPrompt();
                 Console.startPrompt();
                 var currentText = Console.SetPromptText(currentText);
