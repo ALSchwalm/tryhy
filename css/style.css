@@ -1,16 +1,74 @@
-.jquery-console-message-error {
-    color:red;
+#control-bar {
+    width: 100%;
+    height: 34px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid black;
 }
-.jquery-console-message-value {
-    color:green;
+
+#title {
+    margin: 0px;
+    padding: 2px 0 0 2px;
+}
+
+/* The editor container element */
+#editor-container {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 35px;
+    left: 0;
+}
+
+#hy-editor {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* Run button sprite from https://github.com/replit/repl.it */
+#editor-run {
+    background: white;
+    background-image: url('/img/sprite.png') !important;
+    background-position: -6px -65px !important;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 5;
+    padding: 14px 19px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0);
+    text-shadow: 0 1px 0 #fff;
+    border: solid 1px #dcdcdc;
+    border-radius: 2px;
+}
+
+#editor-run:hover {
+    background-position: -6px -97px !important;
+}
+
+#editor-run:active {
+    background-position: -6px -129px !important;
 }
 
 /* The console container element */
 #hy-console {
     position: absolute;
-    width: 1024px;
-    height: 768px;
+    width: 50%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    top: 35px;
     background-color:white;
+    border-left: 1px solid black;
+}
+
+/* Classes used to style outputs */
+.jquery-console-message-error {
+    color: red;
+}
+.jquery-console-message-value {
+    color: green;
 }
 /* The inner console element. */
 .jqconsole {

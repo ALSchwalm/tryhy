@@ -6,18 +6,23 @@
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/jqconsole.min.js"></script>
     <script type="text/javascript" src="js/balanced-min.js"></script>
+    <script type="text/javascript" src="js/ace.js"></script>
     <script type="text/javascript" src="js/repl.js"></script>
+    <script type="text/javascript" src="js/editor.js"></script>
     <script type="text/javascript">
       var hy_version = '{{hy_version}}';
       var server_software = '{{server_software}}';
     </script>
-    <!-- <link rel="stylesheet" type="text/css" href="css/ansi.css"> -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta property="og:title" content="try-hylang" />
     <meta property="og:image" content="http://docs.hylang.org/en/latest/_images/hy_logo-smaller.png" />
     <meta property="og:description" content="hylang repl">
   <body>
+      <div id="control-bar"><h2 id="title">Try-hy</h2></div>
+      <div id="editor-container">
+          <div id="hy-editor" class="editor"></div>
+          <div id="editor-run" class="button"></div>
+      </div>
       <div id="hy-console" class="console"></div>
-      <!-- <div id="footer"><a href="https://github.com/hylang/tryhy" target="_new">hylang/tryhy</a></div> -->
   </body>
 </html>

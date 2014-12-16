@@ -1,10 +1,10 @@
 $(document).ready(function(){
-    var backlog = [];
-    var jqconsole = $('#hy-console').jqconsole(
+    Console = $('#hy-console').jqconsole(
         'hy ({hy_version}) [{server_software}]\n'.supplant({
             hy_version: hy_version,
             server_software: server_software
         }), "=> ", "... ");
+    Console.backlog = [];
 
     // Test if an input is part of a multiline input by removing all string
     // literals and then running the input through balance.js to test if
@@ -21,37 +21,39 @@ $(document).ready(function(){
 	    source: input,
 	    open: ['{', '[', '('],
 	    close: ['}', ']', ')'],
-	    ignore: []
+            balance : true
 	});
-        return (isbalanced.length === 0) ? -1 : false;
+        return (isbalanced === null) ? 0 : false;
     }
 
-    var startPrompt = function() {
-        jqconsole.Prompt(true, function(input) {
+    Console.startPrompt = function() {
+        Console.Prompt(true, function(input) {
             $.ajax({
                 type: 'POST',
-                url: '/eval',
-                data: JSON.stringify({code: input, env: backlog}),
+                url: '/eval_repl',
+                data: JSON.stringify({code: input, env: Console.backlog}),
                 contentType: 'application/json',
                 dataType: 'json',
                 success: function(data) {
-                    jqconsole.Write(data.stdout, 'jquery-console-message-value');
-                    jqconsole.Write(data.stderr, 'jquery-console-message-error');
-                    backlog.push(input);
-                    startPrompt();
+                    Console.Write(data.stdout, 'jquery-console-message-value');
+                    Console.Write(data.stderr, 'jquery-console-message-error');
+                    Console.backlog.push(input);
+                    Console.startPrompt();
                 }
             });
         }, multiline);
     };
-    startPrompt();
 
-    jqconsole.RegisterShortcut('E', function() {
+    Console.RegisterShortcut('E', function() {
         this.MoveToEnd();
     });
 
-    jqconsole.RegisterShortcut('A', function() {
+    Console.RegisterShortcut('A', function() {
         this.MoveToStart();
     });
+
+    Console.startPrompt();
+    Console.SetPromptText("(+ 41 1)")
 });
 
 
