@@ -34,4 +34,8 @@ $(document).ready(function(){
     $("#editor-run").click(function() {
         editor.eval();
     })
+
+    $.get("/static/examples/quickstart.hy", function(data) {
+        editor.insert(data);
+    })
 });
