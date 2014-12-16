@@ -53,7 +53,6 @@ $(document).ready(function(){
     });
 
     Console.startPrompt();
-    Console.SetPromptText("(+ 41 1)")
 });
 
 
