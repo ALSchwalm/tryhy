@@ -15,13 +15,7 @@
                (setv sys.stdout fake-stdout)
                (setv fake-stderr (StringIO))
                (setv sys.stderr fake-stderr)
-
-               (if repl
-                 (HyREPL.runsource self code "<input>" "single")
-                 (try (run_command code)
-                      (catch [_ Exception]
-                        (sys.stderr.write (traceback.format_exc)))))
-
+               (HyREPL.runsource self code "<input>" "single")
                (setv sys.stdout old-stdout)
                (setv sys.stderr old-stderr)
                {"stdout" (fake-stdout.getvalue) "stderr" (fake-stderr.getvalue)})]])
@@ -34,16 +28,10 @@
            {"hy_version" hy.__version__ "server_software" (get os.environ "SERVER_SOFTWARE")})
     ))
 
-(with-decorator (apply app.route ["/eval_repl"] {"methods" ["POST"]})
+(with-decorator (apply app.route ["/eval"] {"methods" ["POST"]})
   (fn []
     (let [[repl (MyHyREPL)] [input (request.get_json)]]
       (for [expr (get input "env")]
         (repl.evaluate expr True))
       (json.dumps (repl.evaluate (get input "code") True))
-    )))
-
-(with-decorator (apply app.route ["/eval_file"] {"methods" ["POST"]})
-  (fn []
-    (let [[repl (MyHyREPL)] [input (request.get_json)]]
-      (json.dumps (repl.evaluate (get input "code") False))
     )))

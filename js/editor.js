@@ -8,8 +8,11 @@ $(document).ready(function(){
         var input = this.getValue();
         $.ajax({
             type: 'POST',
-            url: '/eval_file',
-            data: JSON.stringify({code: input}),
+            url: '/eval',
+
+            // eval with no environment means the execution of the
+            // script will not be affected by the contents of the repl
+            data: JSON.stringify({code: input, env: []}),
             contentType: 'application/json',
             dataType: 'json',
             success: function(data) {

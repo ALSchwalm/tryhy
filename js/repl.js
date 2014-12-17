@@ -30,7 +30,7 @@ $(document).ready(function(){
         Console.Prompt(true, function(input) {
             $.ajax({
                 type: 'POST',
-                url: '/eval_repl',
+                url: '/eval',
                 data: JSON.stringify({code: input, env: Console.backlog}),
                 contentType: 'application/json',
                 dataType: 'json',
