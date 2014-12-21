@@ -53,5 +53,7 @@ $(document).ready(function(){
     $(".example").click(function(e){
         e.preventDefault();
         Editor.loadExample($(this).attr("href"));
+        $(".example").parent().removeClass("active");
+        $(this).parent().addClass("active");
     }).first().click();
 });
