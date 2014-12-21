@@ -41,10 +41,15 @@ $(document).ready(function(){
         });
     }
 
-    $("#editor-run").click(function() {
-        Editor.eval();
-    })
+    $("#editor-run").click(function() { Editor.eval(); });
 
+    // Fade in/out the run button
+    $("#hy-editor")
+        .mouseleave(function(){ return $("#editor-run").fadeIn("fast"); })
+         .mousemove(function(){ return $("#editor-run").fadeIn("fast"); })
+           .keydown(function(){ return $("#editor-run").fadeOut("fast"); });
+
+    // Automatically load the first example into the editor
     $(".example").click(function(e){
         e.preventDefault();
         Editor.loadExample($(this).attr("href"));
