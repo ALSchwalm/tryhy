@@ -6,23 +6,53 @@
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/jqconsole.min.js"></script>
     <script type="text/javascript" src="js/balanced-min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/ace.js"></script>
     <script type="text/javascript" src="js/repl.js"></script>
     <script type="text/javascript" src="js/editor.js"></script>
     <script type="text/javascript">
-      var hy_version = '{{hy_version}}';
-      var server_software = '{{server_software}}';
+     var hy_version = '{{hy_version}}';
+     var server_software = '{{server_software}}';
     </script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <meta property="og:title" content="try-hylang" />
     <meta property="og:image" content="http://docs.hylang.org/en/latest/_images/hy_logo-smaller.png" />
     <meta property="og:description" content="hylang repl">
-  <body>
-      <div id="control-bar"><h2 id="title">Try-hy</h2></div>
-      <div id="editor-container">
-          <div id="hy-editor" class="editor"></div>
-          <div id="editor-run" class="button"></div>
+
+    <body>
+      <div class="container">
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Try-hy</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Example <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="chessboard.hy" class="example">Chessboard</a></li>
+                    <li><a href="#" class="example">Another Example</a></li>
+                    <li><a href="#" class="example">Third Example</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div><!--/.container-fluid -->
+        </nav>
+
+        <div id="repl-editor-container" class="jumbotron">
+          <div id="editor-container">
+            <div id="hy-editor" class="editor"></div>
+            <div id="editor-run" class="button"></div>
+          </div>
+          <div id="hy-console" class="console"></div>
+        </div>
       </div>
-      <div id="hy-console" class="console"></div>
-  </body>
+    </body>
 </html>

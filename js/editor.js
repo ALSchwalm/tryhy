@@ -1,10 +1,16 @@
 $(document).ready(function(){
-    var editor = ace.edit("hy-editor");
+    Editor = ace.edit("hy-editor");
 
     // For now, just use the existing clojure mode
-    editor.getSession().setMode("ace/mode/clojure")
+    Editor.getSession().setMode("ace/mode/clojure")
 
-    editor.eval = function() {
+    Editor.loadExample = function(fileName) {
+        $.get("/static/examples/"+fileName, function(data) {
+            Editor.getSession().setValue(data);
+        });
+    }
+
+    Editor.eval = function() {
         var input = this.getValue();
         $.ajax({
             type: 'POST',
@@ -19,9 +25,7 @@ $(document).ready(function(){
 
                 // Stop and start the console to force a new prompt to be printed
                 var currentText = Console.GetPromptText();
-                Console.ClearPromptText();
-                Console.AbortPrompt();
-                Console.startPrompt();
+                Console.ClearPromptText().AbortPrompt().startPrompt();
                 var currentText = Console.SetPromptText(currentText);
 
                 Console.Write(data.stdout, 'jquery-console-message-value');
@@ -35,10 +39,11 @@ $(document).ready(function(){
     }
 
     $("#editor-run").click(function() {
-        editor.eval();
+        Editor.eval();
     })
 
-    $.get("/static/examples/quickstart.hy", function(data) {
-        editor.insert(data);
-    })
+    $(".example").click(function(e){
+        e.preventDefault();
+        Editor.loadExample($(this).attr("href"));
+    }).first().click();
 });

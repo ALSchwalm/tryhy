@@ -1,24 +1,35 @@
-#control-bar {
-    width: 100%;
-    height: 5%;
-    position: absolute;
-    top: 0;
-    left: 0;
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-#title {
-    margin: 0px;
-    padding: 2px 0 0 2px;
+.navbar {
+  margin-bottom: 20px;
+}
+
+.container{
+    position:absolute;
+
+    /* explicit left, right so margin centers the div */
+    left: 0;
+    right: 0;
+
+    margin: 0 auto;
+    height:85%;
+}
+
+#repl-editor-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
 }
 
 /* The editor container element */
 #editor-container {
     position: absolute;
-    width: 50%;
-    height: 95%;
-    top: 35px;
-    left: 0;
-    border-top: 1px solid black;
+    width: 49%;
+    height: 97%;
 }
 
 #hy-editor {
@@ -53,14 +64,10 @@
 
 /* The console container element */
 #hy-console {
-    position: absolute;
-    width: 50%;
-    bottom: 0;
-    right: 0;
-    top: 35px;
-    background-color:white;
-    border-left: 1px solid black;
-    border-top: 1px solid black;
+    position: relative;
+    float: right;
+    height: 100%;
+    width: 49%;
 }
 
 /* Classes used to style outputs */
