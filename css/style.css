@@ -3,7 +3,11 @@ body {
     padding-bottom: 20px;
 }
 
-#repl-editor-container{
+#about {
+    padding: 5px;
+}
+
+#repl-editor-container {
     position: relative;
     height: 100%;
 }
