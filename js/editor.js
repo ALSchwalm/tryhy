@@ -25,7 +25,9 @@ $(document).ready(function(){
 
                 // Stop and start the console to force a new prompt to be printed
                 var currentText = Console.GetPromptText();
-                Console.ClearPromptText().AbortPrompt().startPrompt();
+                Console.ClearPromptText();
+                Console.AbortPrompt()
+                Console.startPrompt();
                 var currentText = Console.SetPromptText(currentText);
 
                 Console.Write(data.stdout, 'jquery-console-message-value');

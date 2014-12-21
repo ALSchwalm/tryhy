@@ -29,7 +29,9 @@ body {
 #editor-container {
     position: absolute;
     width: 49%;
-    height: 97%;
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
 }
 
 #hy-editor {
@@ -64,10 +66,11 @@ body {
 
 /* The console container element */
 #hy-console {
-    position: relative;
-    float: right;
-    height: 100%;
+    position: absolute;
     width: 49%;
+    top: 10px;
+    bottom: 10px;
+    right: 10px;
 }
 
 /* Classes used to style outputs */
