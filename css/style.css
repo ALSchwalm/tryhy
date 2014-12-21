@@ -22,22 +22,33 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    padding: 10px;
 }
 
 /* The editor container element */
 #editor-container {
     position: absolute;
-    width: 49%;
-    top: 10px;
-    bottom: 10px;
-    left: 10px;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    padding:5px;
+    padding-right:10px;
 }
 
 #hy-editor {
     position: relative;
     width: 100%;
     height: 100%;
+}
+
+
+/* The console container element */
+#hy-console {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    margin: 5px;
+    margin-left: 10px;
 }
 
 /* Run button sprite from https://github.com/replit/repl.it */
@@ -62,15 +73,6 @@ body {
 
 #editor-run:active {
     background-position: -6px -129px !important;
-}
-
-/* The console container element */
-#hy-console {
-    position: absolute;
-    width: 49%;
-    top: 10px;
-    bottom: 10px;
-    right: 10px;
 }
 
 /* Classes used to style outputs */

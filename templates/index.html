@@ -19,7 +19,7 @@
     <meta property="og:title" content="try-hylang" />
     <meta property="og:image" content="http://docs.hylang.org/en/latest/_images/hy_logo-smaller.png" />
     <meta property="og:description" content="hylang repl">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <body>
       <div class="container">
         <nav class="navbar navbar-default" role="navigation">
@@ -47,11 +47,13 @@
         </nav>
 
         <div id="repl-editor-container" class="jumbotron">
-          <div id="editor-container">
-            <pre id="hy-editor" class="editor"></pre>
-            <div id="editor-run" class="button"></div>
+          <div class="row">
+            <div id="editor-container" class="hidden-xs col-sm-8 col-md-8 pull-left">
+              <pre id="hy-editor" class="editor"></pre>
+              <div id="editor-run" class="button"></div>
+            </div>
+            <div id="hy-console" class="console col-xs-12 col-sm-4 col-md-4 pull-right"></div>
           </div>
-          <div id="hy-console" class="console"></div>
         </div>
       </div>
     </body>
