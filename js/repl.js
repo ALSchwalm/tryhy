@@ -39,10 +39,19 @@ $(document).ready(function(){
                     Console.Write(data.stderr, 'jquery-console-message-error');
                     Console.backlog.push(input);
                     Console.startPrompt();
+                    Console.scrollToBottom();
                 }
             });
         }, multiline);
     };
+
+    Console.scrollToBottom = function() {
+        $(".jqconsole").scrollTop($(".jqconsole")[0].scrollHeight);
+    }
+
+    $("#hy-console :input").keydown(function(){
+        Console.scrollToBottom();
+    });
 
     Console.RegisterShortcut('E', function() {
         this.MoveToEnd();

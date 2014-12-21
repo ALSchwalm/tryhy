@@ -32,6 +32,7 @@ $(document).ready(function(){
 
                 Console.Write(data.stdout, 'jquery-console-message-value');
                 Console.Write(data.stderr, 'jquery-console-message-error');
+                Console.scrollToBottom();
 
                 // Allow the repl to be able to call functions/access variables
                 // defined by evalauating the contents of the editor
