@@ -33,12 +33,13 @@
 {% block content %}
 <div id="repl-editor-container" class="jumbotron">
   <div class="row">
-    <div id="editor-container" class="col-sm-8 hidden-xs">
+    <div id="editor-container" class="col-md-8 col-sm-12 hidden-xs">
       <pre id="hy-editor" class="editor"></pre>
       <div id="editor-run" class="button"></div>
     </div>
-    <div id="hy-console" class="console col-sm-4 col-xs-12"></div>
+  </div>
+  <div class="row">
+    <div id="hy-console" class="console col-md-4 col-sm-12 col-xs-12"></div>
   </div>
 </div>
-<div id="about" class="jumbotron">
 {% endblock %}
