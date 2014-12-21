@@ -25,7 +25,13 @@
 (with-decorator (apply app.route ["/"] {"methods" ["GET"]})
   (fn []
     (apply render_template ["index.html"]
-           {"hy_version" hy.__version__ "server_software" (get os.environ "SERVER_SOFTWARE")})
+           {"hy_version" hy.__version__
+            "server_software" (get os.environ "SERVER_SOFTWARE")})
+    ))
+
+(with-decorator (apply app.route ["/about.html"] {"methods" ["GET"]})
+  (fn []
+    (apply render_template ["about.html"]{ "title" "About this website" })
     ))
 
 (with-decorator (apply app.route ["/eval"] {"methods" ["POST"]})

@@ -18,6 +18,10 @@ body {
     height:83%;
 }
 
+#about {
+    display: none;
+}
+
 #repl-editor-container{
     position: relative;
     width: 100%;

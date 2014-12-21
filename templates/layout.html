@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title or "Try-hy"}}</title>
+    <meta name="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    {% block javascript %}
+    {% endblock %}
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <meta property="og:title" content="try-hylang" />
+    <meta property="og:image" content="http://docs.hylang.org/en/latest/_images/hy_logo-smaller.png" />
+    <meta property="og:description" content="hylang repl">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <body>
+      <div class="container">
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">Try-hy</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                {% block navbar %}
+                {% endblock %}
+            </div><!--/.nav-collapse -->
+          </div><!--/.container-fluid -->
+        </nav>
+
+        {% block content %}
+        {% endblock %}
+
+        </div>
+      </div>
+    </body>
+</html>
