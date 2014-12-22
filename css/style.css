@@ -58,6 +58,7 @@ body {
 
     #editor-container {
         height: 70%;
+        width: 100%;
     }
 }
 
@@ -116,7 +117,7 @@ body {
     font-weight: bold;
 }
 .jquery-console-message-value {
-    color: green;
+    color: #4FBF5C;
     font-weight: bold;
 }
 /* The inner console element. */
@@ -127,7 +128,7 @@ body {
 }
 /* Welcome string color */
 .jqconsole-header {
-    color: LightGray;
+    color: DarkGray;
 }
 /* The cursor. */
 .jqconsole-cursor {
@@ -140,12 +141,10 @@ body {
 /* The current prompt text color */
 .jqconsole-prompt {
     color: LightGray;
-    font-weight: bold;
 }
 /* The command history */
 .jqconsole-old-prompt {
     color: LightGray;
-    font-weight: bold;
 }
 /* The text color when in input mode. */
 .jqconsole-input {
