@@ -113,42 +113,51 @@ body {
 /* Classes used to style outputs */
 .jquery-console-message-error {
     color: red;
+    font-weight: bold;
 }
 .jquery-console-message-value {
     color: green;
+    font-weight: bold;
 }
 /* The inner console element. */
 .jqconsole {
     padding: 10px;
     height: 100%;
+    background-color: #0e1628;
+}
+/* Welcome string color */
+.jqconsole-header {
+    color: LightGray;
 }
 /* The cursor. */
 .jqconsole-cursor {
-    background-color: gray;
+    background-color: LightGray;
 }
 /* The cursor color when the console looses focus. */
 .jqconsole-blurred .jqconsole-cursor {
-    background-color: LightGray;
+    background-color: #333333;
 }
 /* The current prompt text color */
 .jqconsole-prompt {
-    color: black;
+    color: LightGray;
+    font-weight: bold;
 }
 /* The command history */
 .jqconsole-old-prompt {
-    color: black;
-    font-weight: normal;
+    color: LightGray;
+    font-weight: bold;
 }
 /* The text color when in input mode. */
 .jqconsole-input {
-    color: black;
+    color: LightGray;
+    font-weight: bold;
 }
 /* Previously entered input. */
 .jqconsole-old-input {
-    color: black;
+    color: white;
     font-weight: normal;
 }
 /* The text color of the output. */
 .jqconsole-output {
-    color: black;
+    color: white;
 }
