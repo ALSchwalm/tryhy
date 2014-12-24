@@ -1,6 +1,35 @@
+html{
+    height: 100%;
+}
+
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    min-height: 100%;
+}
+
+#content-container{
+    position:absolute;
+
+    /* explicit left, right so margin centers the div */
+    left: 0px;
+    right: 0px;
+
+    top: 20px;
+    bottom: 15px;
+    margin: 0 auto;
+}
+
+#footer{
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+}
+
+#footer-container{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    left: 0px;
 }
 
 #about {
@@ -8,8 +37,11 @@ body {
 }
 
 #repl-editor-container {
-    position: relative;
-    height: 100%;
+    position: absolute;
+    top: 50px;
+    bottom: 0px;
+    left: 15px;
+    right: 15px;
 }
 
 /* The editor container element */
@@ -37,17 +69,6 @@ body {
     margin: 5px;
 }
 
-.container{
-    position:absolute;
-
-    /* explicit left, right so margin centers the div */
-    left: 0;
-    right: 0;
-
-    margin: 0 auto;
-    height:83%;
-}
-
 /* Position the repl below the editor on tablet sized screens */
 @media (max-width: 1024px) {
     #hy-console {
@@ -66,19 +87,18 @@ body {
  * so just remove the padding on body, container, etc.
  */
 @media (max-width: 768px) {
-    body {
-        padding-top: 0px;
-        padding-bottom: 0px;
-    }
-
-    .container {
+    #content-container {
         padding:0;
         margin:0;
-        height:100%;
+        top: 0px;
+        bottom: 0px;
     }
 
-    .navbar {
-        margin-bottom: 5px;
+    #repl-editor-container{
+        padding:0;
+        margin:0;
+        left: 0px;
+        right: 0px;
     }
 
     #hy-console {
