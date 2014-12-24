@@ -5,9 +5,15 @@ $(document).ready(function(){
     Editor.getSession().setMode("ace/mode/clojure")
 
     Editor.loadExample = function(fileName) {
-        $.get("/static/examples/"+fileName, function(data) {
-            Editor.getSession().setValue(data);
-        });
+        $.ajax({
+            url: "/static/examples/"+fileName,
+            success: function(data) {
+                Editor.getSession().setValue(data);
+            },
+            error: function(error) {
+                  console.log(error);
+                  Util.error("Unable to load " + fileName + " from server.");
+            }});
     }
 
     Editor.eval = function() {
@@ -37,6 +43,9 @@ $(document).ready(function(){
                 // Allow the repl to be able to call functions/access variables
                 // defined by evalauating the contents of the editor
                 Console.backlog.push(input)
+            },
+            error: function(error) {
+                Util.error("Unable to execute script.");
             }
         });
     }

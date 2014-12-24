@@ -40,6 +40,10 @@ $(document).ready(function(){
                     Console.backlog.push(input);
                     Console.startPrompt();
                     Console.scrollToBottom();
+                },
+                error: function(data) {
+                    Util.error("Unable to evaluate line.");
+                    Console.startPrompt();
                 }
             });
         }, multiline);
