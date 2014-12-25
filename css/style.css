@@ -1,45 +1,28 @@
-html{
+html, body {
     height: 100%;
 }
 
-body {
-    min-height: 100%;
-}
-
 #content-container{
-    position:absolute;
-
-    /* explicit left, right so margin centers the div */
-    left: 0px;
-    right: 0px;
-
-    top: 20px;
-    bottom: 15px;
-    margin: 0 auto;
+    position:relative;
+    height: 100%;
+    min-height: 500px;
+    padding-top: 20px;
 }
 
 #footer{
-    position: absolute;
-    width: 100%;
-    bottom: 10px;
-}
-
-#footer-container{
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
     text-align: center;
-    left: 0px;
+    margin: -25px;
 }
 
-#about {
-    padding: 5px;
+#footer a{
+    color: white;
+    text-decoration: underline;
 }
 
 #repl-editor-container {
     position: absolute;
-    top: 50px;
-    bottom: 0px;
+    top: 70px;
+    bottom: 10px;
     left: 15px;
     right: 15px;
 }
@@ -87,23 +70,32 @@ body {
  * so just remove the padding on body, container, etc.
  */
 @media (max-width: 768px) {
-    #content-container {
-        padding:0;
-        margin:0;
-        top: 0px;
-        bottom: 0px;
+    body, html,
+    #content-container,
+    #repl-editor-container,
+    .jumbotron {
+        padding: 0px;
+        margin: 0px;
     }
 
-    #repl-editor-container{
-        padding:0;
-        margin:0;
-        left: 0px;
-        right: 0px;
+    #content-container {
+        min-height: initial;
+    }
+
+    #about {
+        padding: 5px;
     }
 
     #hy-console {
         top: 0px;
         margin: 0px;
+    }
+
+    #repl-editor-container {
+        top: 50px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
     }
 }
 

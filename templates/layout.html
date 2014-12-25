@@ -16,6 +16,7 @@
     <meta property="og:description" content="hylang repl">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <body>
+      <div id="alert"></div>
       <div id="content-container" class="container">
         <nav class="navbar navbar-default" role="navigation">
           <div class="container-fluid">
@@ -31,13 +32,12 @@
         {% block content %}
         {% endblock %}
       </div>
-
-      <footer id="footer" class="container hidden-xs">
-        <div id="footer-container">
-          <small>Built using bootswatch</small> ·
-          <small>Fork this website on github</small> ·
-          <small>Copyright 2014</small>
-        </div>
-      </footer>
+      <div id="footer" class="row col-sm-12 hidden-xs">
+        <small>Built using <a target="_blank" href="http://bootswatch.com/">bootswatch</a></small>
+        &nbsp;·&nbsp;
+        <small>Fork this website on <a target="_blank" href="https://github.com/hylang/tryhy">github</a></small>
+        &nbsp;·&nbsp;
+        <small>Copyright 2014</small>
+      </div>
     </body>
 </html>
