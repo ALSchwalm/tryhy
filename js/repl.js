@@ -27,17 +27,19 @@ $(document).ready(function(){
     }
 
     Console.startPrompt = function() {
-        Console.Prompt(true, function(input) {
+        Console.Prompt(true, function(code) {
+            var input = $('#editor-input').val();
             $.ajax({
                 type: 'POST',
-                url: '/eval',
-                data: JSON.stringify({code: input, env: Console.backlog}),
+                url: '/eval_repl',
+                data: JSON.stringify({code: code, input: input,
+                                      env: Console.backlog}),
                 contentType: 'application/json',
                 dataType: 'json',
                 success: function(data) {
                     Console.Write(data.stdout, 'jquery-console-message-value');
                     Console.Write(data.stderr, 'jquery-console-message-error');
-                    Console.backlog.push(input);
+                    Console.backlog.push({code: code, input: input});
                     Console.startPrompt();
                     Console.scrollToBottom();
                 },

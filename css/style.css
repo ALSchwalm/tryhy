@@ -37,6 +37,18 @@ html, body {
     padding-right:10px;
 }
 
+#editor-input {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    margin: 0 auto;
+    width: 90%;
+    bottom: 5px;
+    height: 80px;
+    z-index: 5;
+    display: none;
+}
+
 /* Actual editor element, must have explicit height */
 #hy-editor {
     position: relative;
@@ -99,20 +111,31 @@ html, body {
     }
 }
 
-/* Run button sprite from https://github.com/replit/repl.it */
-#editor-run {
+.editor-control {
     background: white;
-    background-image: url('/img/sprite.png') !important;
-    background-position: -6px -65px !important;
     position: absolute;
-    top: 10px;
     right: 20px;
     z-index: 5;
-    padding: 14px 19px;
+    width: 40px;
+    height: 28px;
+    cursor: pointer;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0);
     text-shadow: 0 1px 0 #fff;
     border: solid 1px #dcdcdc;
     border-radius: 2px;
+}
+
+#editor-show-input {
+    top: 50px;
+    text-align: center;
+    color: #8C8C8C;
+}
+
+/* Run button sprite from https://github.com/replit/repl.it */
+#editor-run {
+    background-image: url('/img/sprite.png') !important;
+    background-position: -6px -65px !important;
+    top: 10px;
 }
 
 #editor-run:hover {

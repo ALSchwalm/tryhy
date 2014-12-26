@@ -17,14 +17,15 @@ $(document).ready(function(){
     }
 
     Editor.eval = function() {
-        var input = this.getValue();
+        var script = this.getValue();
+        var input = $('#editor-input').val();
         $.ajax({
             type: 'POST',
-            url: '/eval',
+            url: '/eval_script',
 
             // eval with no environment means the execution of the
             // script will not be affected by the contents of the repl
-            data: JSON.stringify({code: input, env: []}),
+            data: JSON.stringify({code: script, input: input}),
             contentType: 'application/json',
             dataType: 'json',
             success: function(data) {
@@ -42,7 +43,7 @@ $(document).ready(function(){
 
                 // Allow the repl to be able to call functions/access variables
                 // defined by evalauating the contents of the editor
-                Console.backlog.push(input)
+                Console.backlog.push({code:script, input:input})
             },
             error: function(error) {
                 Util.error("Unable to execute script.");
@@ -50,13 +51,20 @@ $(document).ready(function(){
         });
     }
 
-    $("#editor-run").click(function() { Editor.eval(); });
+    Editor.toggleInput = function(){
+        $('#editor-input').animate({
+            height : "toggle"
+        });
+    }
 
-    // Fade in/out the run button
+    $("#editor-run").click(function() { Editor.eval(); });
+    $("#editor-show-input").click(function() { Editor.toggleInput(); });
+
+    // Fade in/out the controls
     $("#hy-editor")
-        .mouseleave(function(){ return $("#editor-run").fadeIn("fast"); })
-         .mousemove(function(){ return $("#editor-run").fadeIn("fast"); })
-           .keydown(function(){ return $("#editor-run").fadeOut("fast"); });
+        .mouseleave(function(){ return $(".editor-control").fadeIn("fast"); })
+         .mousemove(function(){ return $(".editor-control").fadeIn("fast"); })
+           .keydown(function(){ return $(".editor-control").fadeOut("fast"); });
 
     // Automatically load the first example into the editor
     $(".example").click(function(e){
