@@ -44,9 +44,10 @@ html, body {
     margin: 0 auto;
     width: 90%;
     bottom: 5px;
-    height: 80px;
+    height: 120px;
     z-index: 5;
     display: none;
+    resize: none;
 }
 
 /* Actual editor element, must have explicit height */
@@ -62,6 +63,33 @@ html, body {
     bottom: 0px;
     right: 0px;
     margin: 5px;
+}
+
+#repl-editor-container.retro {
+    background-image: url(/img/symbolics.jpg);
+    background-repeat: no-repeat;
+    Background-color: white;
+    background-position: -80px -40px;
+    border: 5px solid #4e5d6c;
+}
+
+.retro #hy-console {
+    top: 0% !important;
+    left: auto !important;
+    margin-top: 110px;
+    margin-left: 110px;
+    -webkit-transform: skew(4deg) rotate(4deg);
+    transform: skew(4deg) rotate(4deg);
+    right: initial;
+    width: 314px;
+    height: 251px;
+    overflow: hidden !important;
+}
+
+.retro .jqconsole {
+    background-color: transparent;
+    border: none;
+    overflow: hidden;
 }
 
 /* Position the repl below the editor on tablet sized screens */

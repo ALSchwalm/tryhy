@@ -55,6 +55,24 @@ $(document).ready(function(){
         $(".jqconsole").scrollTop($(".jqconsole")[0].scrollHeight);
     }
 
+    Console.toggleRetroView = function() {
+        if (!$(".retro").length) {
+            $("#editor-container").hide();
+            $("#repl-editor-container").addClass("retro");
+        } else {
+            $("#editor-container").show();
+            $(".retro").removeClass("retro");
+        }
+    }
+
+    // Connect the style dropdown menu
+    $(".style").click(function(e){
+        e.preventDefault();
+        Console.toggleRetroView();
+        $(".style").parent().removeClass("active");
+        $(this).parent().addClass("active");
+    })
+
     $("#hy-console :input").keydown(function(){
         Console.scrollToBottom();
     });
