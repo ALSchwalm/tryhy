@@ -3,12 +3,6 @@
   <head>
     <title>{{title or "Try-hy"}}</title>
     <meta name="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
-    {% block javascript %}
-    {% endblock %}
-
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta property="og:title" content="try-hylang" />
@@ -39,5 +33,11 @@
         &nbsp;·&nbsp;
         <small>Copyright 2014</small>
       </div>
+
+      <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+      {% block javascript %}
+      {% endblock %}
     </body>
 </html>
